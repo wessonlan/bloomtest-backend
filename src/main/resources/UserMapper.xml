@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pingguo.bloomtest.dao.UserMapper">
+    <select id="getUserById" resultType="com.pingguo.bloomtest.pojo.User" databaseId="mysql">
+      select * from user where id = #{swk}
+    </select>
+
+    <select id="getUserByIdAndUsername" resultType="com.pingguo.bloomtest.pojo.User" databaseId="mysql">
+      select * from user where id = #{id} and username=#{username}
+    </select>
+
+    <select id="getUserByUsernameLike" resultType="com.pingguo.bloomtest.pojo.User" databaseId="mysql">
+      select * from user where username like #{username}
+    </select>
+
+    <select id="getUserByMap" resultType="com.pingguo.bloomtest.pojo.User" databaseId="mysql">
+      select * from user where id = #{id} and username=#{username}
+    </select>
+
+    <select id="getUserByIdReturnMap" resultType="map">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="getUserByUsernameReturnMap" resultType="com.pingguo.bloomtest.pojo.User">
+        select * from user where username like #{username}
+    </select>
+    <!--新增-->
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id">
+        insert into user(username, password, createTime, updateTime)
+        values(#{username}, #{password}, #{createTime}, #{updateTime})
+    </insert>
+
+    <!--更新-->
+    <update id="updateUser">
+        update user
+          set username=#{username}, password=#{password}, createTime=#{createTime}, updateTime=#{updateTime}
+          where id=#{id}
+    </update>
+
+    <!--删除-->
+    <delete id="deleteUser">
+        delete from user where id=#{id}
+    </delete>
+</mapper>

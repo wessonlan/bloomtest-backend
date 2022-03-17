@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="application.properties" />
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <typeAliases>
+        <!--<typeAlias type="com.pingguo.bloomtest.pojo.User" alias="user" />-->
+        <package name="com.pingguo.bloomtest.pojo" />
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${spring.datasource.driver-class-name}"/>
+                <property name="url" value="${spring.datasource.url}"/>
+                <property name="username" value="${spring.datasource.username}"/>
+                <property name="password" value="${spring.datasource.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <databaseIdProvider type="DB_VENDOR">
+        <property name="MySQL" value="mysql"/>
+        <property name="DB2" value="db2"/>
+        <property name="Oracle" value="oracle" />
+    </databaseIdProvider>
+    <mappers>
+        <!--<mapper class="com.pingguo.bloomtest.dao.UserMapper"/>-->
+        <!--<package name="com.pingguo.bloomtest.dao" />-->
+        <mapper resource="UserMapper.xml" />
+        <mapper resource="UserMapperPlus.xml" />
+    </mappers>
+</configuration>
