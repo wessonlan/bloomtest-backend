@@ -50,6 +50,7 @@ public class ApiModuleService {
                     tree.putExtra("label", treeNode.getName());
                     tree.putExtra("createTime", treeNode.getCreateTime());
                     tree.putExtra("updateTime", treeNode.getUpdateTime());
+                    tree.putExtra("value", treeNode.getId().toString());
 
                 });
         return treeNodes;

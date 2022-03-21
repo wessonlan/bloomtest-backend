@@ -17,7 +17,7 @@ public class ApiDefinition {
     private String path;
     private String host;
     private String description;
-    private Long moduleId;
+    private String moduleId;
     private int requestType;
 
     private String apiHeader;
