@@ -20,11 +20,14 @@ public class ApiDefinition {
     private String moduleId;
     private int requestType;
 
-    private String apiHeader;
+    @TableField("apiHeader")
+    private String headersKeyValue;
 
-    private String request;
+    @TableField("request")
+    private String reqParamInfo;
 
-    private String response;
+    @TableField("response")
+    private String responseInfo;
 
     private String createUser;
     @TableField(fill = FieldFill.INSERT)        // 新增的时候填充数据
