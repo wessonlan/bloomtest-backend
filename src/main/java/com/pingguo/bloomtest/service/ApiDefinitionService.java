@@ -2,8 +2,8 @@ package com.pingguo.bloomtest.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.pingguo.bloomtest.controller.request.ApiRunTestRequest;
-import com.pingguo.bloomtest.pojo.ApiDefinition;
+import com.pingguo.bloomtest.entity.request.ApiRunTestRequest;
+import com.pingguo.bloomtest.entity.ApiDefinition;
 
 /**
  * @author weikang.sang

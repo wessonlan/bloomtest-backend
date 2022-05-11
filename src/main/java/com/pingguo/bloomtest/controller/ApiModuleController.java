@@ -1,8 +1,8 @@
 package com.pingguo.bloomtest.controller;
 
 import com.pingguo.bloomtest.common.Result;
-import com.pingguo.bloomtest.controller.request.EditNodeRequest;
-import com.pingguo.bloomtest.pojo.ApiModule;
+import com.pingguo.bloomtest.entity.request.EditNodeRequest;
+import com.pingguo.bloomtest.entity.ApiModule;
 import com.pingguo.bloomtest.service.impl.ApiModuleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

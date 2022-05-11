@@ -1,8 +1,8 @@
 package com.pingguo.bloomtest.service;
 
 import cn.hutool.core.lang.tree.Tree;
-import com.pingguo.bloomtest.controller.request.EditNodeRequest;
-import com.pingguo.bloomtest.pojo.ApiModule;
+import com.pingguo.bloomtest.entity.request.EditNodeRequest;
+import com.pingguo.bloomtest.entity.ApiModule;
 
 import java.util.List;
 

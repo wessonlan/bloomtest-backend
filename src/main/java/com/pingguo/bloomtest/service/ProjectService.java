@@ -1,7 +1,7 @@
 package com.pingguo.bloomtest.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.pingguo.bloomtest.pojo.Project;
+import com.pingguo.bloomtest.entity.Project;
 
 import java.util.List;
 

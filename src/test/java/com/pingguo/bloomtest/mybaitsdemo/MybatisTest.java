@@ -1,7 +1,7 @@
 //package com.pingguo.bloomtest.mybaitsdemo;
 //
 //import com.pingguo.bloomtest.mapper.UserDemoMapperPlus;
-//import com.pingguo.bloomtest.pojo.User;
+//import com.pingguo.bloomtest.entity.User;
 //import org.apache.ibatis.io.Resources;
 //import org.apache.ibatis.session.SqlSession;
 //import org.apache.ibatis.session.SqlSessionFactory;

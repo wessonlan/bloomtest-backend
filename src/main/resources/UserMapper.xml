@@ -3,19 +3,19 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pingguo.bloomtest.mapper.UserDemoMapper">
-    <select id="getUserById" resultType="com.pingguo.bloomtest.pojo.User" databaseId="mysql">
+    <select id="getUserById" resultType="com.pingguo.bloomtest.entity.User" databaseId="mysql">
       select * from user where id = #{swk}
     </select>
 
-    <select id="getUserByIdAndUsername" resultType="com.pingguo.bloomtest.pojo.User" databaseId="mysql">
+    <select id="getUserByIdAndUsername" resultType="com.pingguo.bloomtest.entity.User" databaseId="mysql">
       select * from user where id = #{id} and username=#{username}
     </select>
 
-    <select id="getUserByUsernameLike" resultType="com.pingguo.bloomtest.pojo.User" databaseId="mysql">
+    <select id="getUserByUsernameLike" resultType="com.pingguo.bloomtest.entity.User" databaseId="mysql">
       select * from user where username like #{username}
     </select>
 
-    <select id="getUserByMap" resultType="com.pingguo.bloomtest.pojo.User" databaseId="mysql">
+    <select id="getUserByMap" resultType="com.pingguo.bloomtest.entity.User" databaseId="mysql">
       select * from user where id = #{id} and username=#{username}
     </select>
 
@@ -23,7 +23,7 @@
         select * from user where id = #{id}
     </select>
 
-    <select id="getUserByUsernameReturnMap" resultType="com.pingguo.bloomtest.pojo.User">
+    <select id="getUserByUsernameReturnMap" resultType="com.pingguo.bloomtest.entity.User">
         select * from user where username like #{username}
     </select>
     <!--新增-->

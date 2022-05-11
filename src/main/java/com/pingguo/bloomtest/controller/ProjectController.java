@@ -2,7 +2,7 @@ package com.pingguo.bloomtest.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.pingguo.bloomtest.common.Result;
-import com.pingguo.bloomtest.pojo.Project;
+import com.pingguo.bloomtest.entity.Project;
 import com.pingguo.bloomtest.service.impl.ProjectServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

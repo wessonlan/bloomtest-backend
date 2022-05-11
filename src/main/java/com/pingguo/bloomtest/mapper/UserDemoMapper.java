@@ -1,6 +1,6 @@
 package com.pingguo.bloomtest.mapper;
 
-import com.pingguo.bloomtest.pojo.User;
+import com.pingguo.bloomtest.entity.User;
 import org.apache.ibatis.annotations.MapKey;
 
 import java.util.List;

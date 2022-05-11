@@ -1,7 +1,7 @@
 package com.pingguo.bloomtest.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.pingguo.bloomtest.pojo.User;
+import com.pingguo.bloomtest.entity.User;
 import org.springframework.stereotype.Repository;
 
 /**

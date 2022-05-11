@@ -9,8 +9,8 @@
     </settings>
 
     <typeAliases>
-        <!--<typeAlias type="com.pingguo.bloomtest.pojo.User" alias="user" />-->
-        <package name="com.pingguo.bloomtest.pojo" />
+        <!--<typeAlias type="com.pingguo.bloomtest.entityty.User" alias="user" />-->
+        <package name="com.pingguo.bloomtest.entity" />
     </typeAliases>
     <environments default="development">
         <environment id="development">

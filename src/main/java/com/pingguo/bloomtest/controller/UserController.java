@@ -1,7 +1,7 @@
 package com.pingguo.bloomtest.controller;
 
 import com.pingguo.bloomtest.common.Result;
-import com.pingguo.bloomtest.controller.request.UserRequest;
+import com.pingguo.bloomtest.entity.request.UserRequest;
 import com.pingguo.bloomtest.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

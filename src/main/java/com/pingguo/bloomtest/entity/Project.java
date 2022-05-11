@@ -1,7 +1,6 @@
-package com.pingguo.bloomtest.pojo;
+package com.pingguo.bloomtest.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;

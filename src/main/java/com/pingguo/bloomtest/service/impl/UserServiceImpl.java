@@ -2,7 +2,7 @@ package com.pingguo.bloomtest.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.pingguo.bloomtest.mapper.UserMapper;
-import com.pingguo.bloomtest.pojo.User;
+import com.pingguo.bloomtest.entity.User;
 import com.pingguo.bloomtest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.pingguo.bloomtest.common.BtException;
 import com.pingguo.bloomtest.mapper.ProjectMapper;
-import com.pingguo.bloomtest.pojo.Project;
+import com.pingguo.bloomtest.entity.Project;
 import com.pingguo.bloomtest.service.ProjectService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
