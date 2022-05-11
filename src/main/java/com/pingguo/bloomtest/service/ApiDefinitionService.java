@@ -1,8 +1,7 @@
 package com.pingguo.bloomtest.service;
 
-import com.alibaba.fastjson.JSONObject;
+import cn.hutool.json.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.pingguo.bloomtest.entity.request.ApiRunTestRequest;
 import com.pingguo.bloomtest.entity.ApiDefinition;
 
 /**
@@ -44,5 +43,12 @@ public interface ApiDefinitionService {
      * @param request
      * @return
      */
-    JSONObject apiTestRun(ApiRunTestRequest request);
+//    JSONObject apiTestRun(ApiRunTestRequest request);
+
+    /**
+     * 发送接口请求new
+     * @param request
+     * @return
+     */
+    JSONObject apiTestRunNew(ApiDefinition request);
 }
