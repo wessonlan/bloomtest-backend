@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pingguo.bloomtest.dao.UserMapper">
+<mapper namespace="com.pingguo.bloomtest.mapper.UserDemoMapper">
     <select id="getUserById" resultType="com.pingguo.bloomtest.pojo.User" databaseId="mysql">
       select * from user where id = #{swk}
     </select>

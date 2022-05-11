@@ -1,13 +1,12 @@
-package com.pingguo.bloomtest.dao;
+package com.pingguo.bloomtest.mapper;
 
 import com.pingguo.bloomtest.pojo.User;
 import org.apache.ibatis.annotations.MapKey;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 import java.util.Map;
 
-public interface UserMapper {
+public interface UserDemoMapper {
     // 查询
     User getUserById(Integer id);
     // 查询 使用多个参数

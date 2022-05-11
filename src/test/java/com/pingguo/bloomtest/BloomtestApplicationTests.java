@@ -1,19 +1,12 @@
 package com.pingguo.bloomtest;
 
 import cn.hutool.core.lang.Console;
-import cn.hutool.http.Header;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpUtil;
-import com.alibaba.fastjson.JSONObject;
-import com.pingguo.bloomtest.dao.UserDAO;
-import com.pingguo.bloomtest.pojo.User;
-import com.pingguo.bloomtest.service.ApiModuleService;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @SpringBootTest

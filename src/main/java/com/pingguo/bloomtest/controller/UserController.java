@@ -2,7 +2,7 @@ package com.pingguo.bloomtest.controller;
 
 import com.pingguo.bloomtest.common.Result;
 import com.pingguo.bloomtest.controller.request.UserRequest;
-import com.pingguo.bloomtest.service.UserService;
+import com.pingguo.bloomtest.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,13 +16,13 @@ import java.util.Map;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    UserServiceImpl userServiceImpl;
 
     @PostMapping("/login")
     public Result login(@RequestBody UserRequest user) throws Exception {
         String username = user.getUsername();
         String password = user.getPassword();
-        if (userService.isUserExist(username, password)) {
+        if (userServiceImpl.isUserExist(username, password)) {
             Map<String, Object> userToken = new HashMap<>(4);
             userToken.put("token","admin-token");
             return Result.success(userToken);

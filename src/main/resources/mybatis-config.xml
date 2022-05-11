@@ -30,8 +30,8 @@
         <property name="Oracle" value="oracle" />
     </databaseIdProvider>
     <mappers>
-        <!--<mapper class="com.pingguo.bloomtest.dao.UserMapper"/>-->
-        <!--<package name="com.pingguo.bloomtest.dao" />-->
+        <!--<mapper class="com.pingguo.bloomtest.mapperper.UserDemoMapper"/>-->
+        <!--<package name="com.pingguo.bloomtest.mapperper" />-->
         <mapper resource="UserMapper.xml" />
         <mapper resource="UserMapperPlus.xml" />
     </mappers>
