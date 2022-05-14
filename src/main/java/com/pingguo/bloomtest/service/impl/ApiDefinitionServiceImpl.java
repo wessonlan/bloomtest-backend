@@ -185,34 +185,64 @@ public class ApiDefinitionServiceImpl implements ApiDefinitionService {
     }
 
     @Override
-    public JSONObject apiTestRunNew(ApiDefinition request) {
+    public String apiTestRunNew(ApiDefinition request) {
+        // method
+        String requestMethod = request.getMethod();
         // header
         JSONArray headers = JSONUtil.parseArray(request.getHeadersKeyValue());
-
+        Map<String, String> headerMap = new HashMap<>();
+        if (checkJSONArray(headers)) {
+            for (Object o: headers) {
+                headerMap.put(JSONUtil.parseObj(o).getStr("name"),
+                        JSONUtil.parseObj(o).getStr("value"));
+            }
+        }
+        // 获取入参
         JSONObject reqParamInfo = JSONUtil.parseObj(request.getReqParamInfo());
-        // param参数
         JSONArray params = reqParamInfo.getJSONArray("paramKeyValue");
-        // rest参数
         JSONArray rest = reqParamInfo.getJSONArray("restKeyValue");
-        // body参数
         JSONObject reqBody = reqParamInfo.getJSONObject("body");
 
-        // 不存在任何参数
+        // get 方法
+        if ("get".equals(requestMethod)) {
+            if (!checkJSONArray(params) & !checkJSONArray(rest) & !checkJSONObject(reqBody)) {
+                // 无参数
+                String requestUrl = request.getHost() + request.getPath();
+                String result = HttpRequest.get(requestUrl)
+                        .addHeaders(headerMap)
+                        .timeout(50000)
+                        .execute().body();
+                return result;
 
-        // 只有 param 参数
+            } else if (checkJSONArray(params) & !checkJSONArray(rest) & !checkJSONObject(reqBody)) {
+                // 只有 param 参数
 
-        // 只有 rest参数
+            } else if (!checkJSONArray(params) & checkJSONArray(rest) & !checkJSONObject(reqBody)) {
+                // 只有 rest 参数
 
-        // 只有 body 参数
+            } else if (!checkJSONArray(params) & !checkJSONArray(rest) & checkJSONObject(reqBody)) {
+                // 只有 body 参数
 
-        // 同时 param + rest
+            } else if (checkJSONArray(params) & checkJSONArray(rest) & !checkJSONObject(reqBody)) {
+                // 同时 param + rest
 
-        // 同时 param + body
+            } else if (checkJSONArray(params) & !checkJSONArray(rest) & checkJSONObject(reqBody)) {
+                // 同时 param + body
 
-        // 同时 rest + body
+            } else if (!checkJSONArray(params) & checkJSONArray(rest) & checkJSONObject(reqBody)) {
+                // 同时 rest + body
 
-        // 同时 param + rest + body
-
+            } else {
+                // 同时 param + rest + body
+            }
+        // post方法
+        } else if (requestMethod.equals("post")) {
+            if (checkJSONArray(params) & !checkJSONArray(rest) & !checkJSONObject(reqBody)) {
+                System.out.println("只有 param 参数");
+            } else {
+                System.out.println("--");
+            }
+        }
         return null;
     }
 

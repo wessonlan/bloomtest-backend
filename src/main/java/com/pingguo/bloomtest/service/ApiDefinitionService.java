@@ -50,5 +50,5 @@ public interface ApiDefinitionService {
      * @param request
      * @return
      */
-    JSONObject apiTestRunNew(ApiDefinition request);
+    String apiTestRunNew(ApiDefinition request);
 }
