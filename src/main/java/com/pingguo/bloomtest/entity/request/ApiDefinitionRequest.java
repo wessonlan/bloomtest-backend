@@ -1,4 +1,4 @@
-package com.pingguo.bloomtest.controller.request;
+package com.pingguo.bloomtest.entity.request;
 
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;

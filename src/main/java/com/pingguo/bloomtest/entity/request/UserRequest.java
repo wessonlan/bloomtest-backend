@@ -1,10 +1,10 @@
-package com.pingguo.bloomtest.controller.request;
+package com.pingguo.bloomtest.entity.request;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 public class UserRequest {
     private String username;
     private String password;

@@ -9,8 +9,8 @@
     </settings>
 
     <typeAliases>
-        <!--<typeAlias type="com.pingguo.bloomtest.pojo.User" alias="user" />-->
-        <package name="com.pingguo.bloomtest.pojo" />
+        <!--<typeAlias type="com.pingguo.bloomtest.entityty.User" alias="user" />-->
+        <package name="com.pingguo.bloomtest.entity" />
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -30,8 +30,8 @@
         <property name="Oracle" value="oracle" />
     </databaseIdProvider>
     <mappers>
-        <!--<mapper class="com.pingguo.bloomtest.dao.UserMapper"/>-->
-        <!--<package name="com.pingguo.bloomtest.dao" />-->
+        <!--<mapper class="com.pingguo.bloomtest.mapperper.UserDemoMapper"/>-->
+        <!--<package name="com.pingguo.bloomtest.mapperper" />-->
         <mapper resource="UserMapper.xml" />
         <mapper resource="UserMapperPlus.xml" />
     </mappers>

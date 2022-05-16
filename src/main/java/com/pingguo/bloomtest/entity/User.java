@@ -1,4 +1,4 @@
-package com.pingguo.bloomtest.pojo;
+package com.pingguo.bloomtest.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
