@@ -1,5 +1,6 @@
 package com.pingguo.bloomtest.service;
 
+import cn.hutool.http.HttpResponse;
 import cn.hutool.json.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.pingguo.bloomtest.entity.ApiDefinition;
@@ -50,5 +51,5 @@ public interface ApiDefinitionService {
      * @param request
      * @return
      */
-    String apiTestRun(ApiDefinition request);
+    JSONObject apiTestRun(ApiDefinition request);
 }

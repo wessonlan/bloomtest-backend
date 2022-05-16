@@ -57,6 +57,7 @@ public class ApiDefinitionController {
 
     @PostMapping("/apiTestRun")
     public Result apiTestRun(@RequestBody ApiDefinition apiDefinition) {
+//        apiDefinitionServiceImpl.apiTestRun(apiDefinition);
         return Result.success(apiDefinitionServiceImpl.apiTestRun(apiDefinition));
     }
 }

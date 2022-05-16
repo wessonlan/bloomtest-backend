@@ -3,6 +3,7 @@ package com.pingguo.bloomtest.service.impl;
 import cn.hutool.core.util.ReUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpRequest;
+import cn.hutool.http.HttpResponse;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
@@ -170,7 +171,7 @@ public class ApiDefinitionServiceImpl implements ApiDefinitionService {
     }
 
     @Override
-    public String apiTestRun(ApiDefinition request) {
+    public JSONObject apiTestRun(ApiDefinition request) {
         // method
         String requestMethod = request.getMethod();
         // header
@@ -185,79 +186,88 @@ public class ApiDefinitionServiceImpl implements ApiDefinitionService {
             if (!checkJSONArray(params) & !checkJSONArray(rest) & !checkJSONObject(reqBody)) {
                 // 无参数
                 String requestUrl = request.getHost() + request.getPath();
-                return HttpRequest.get(requestUrl)
-                        .addHeaders(handleHeader2Map(headers))
-                        .timeout(50000)
-                        .execute().body();
-            } else if (checkJSONArray(params) & !checkJSONArray(rest) & !checkJSONObject(reqBody)) {
+//                return HttpRequest.get(requestUrl)
+//                        .addHeaders(handleHeader2Map(headers))
+//                        .timeout(50000)
+//                        .execute();
+            }
+            else if (checkJSONArray(params) & !checkJSONArray(rest) & !checkJSONObject(reqBody)) {
                 // 只有 param 参数
                 String requestUrl = request.getHost() + request.getPath();
-                return HttpRequest.get(requestUrl)
+                HttpResponse httpResponse = HttpRequest.get(requestUrl)
                         .addHeaders(handleHeader2Map(headers))
                         .form(handleParams2Map(params))
                         .timeout(50000)
-                        .execute().body();
-            } else if (!checkJSONArray(params) & checkJSONArray(rest) & !checkJSONObject(reqBody)) {
-                // 只有 rest 参数
-                String requestUrl = request.getHost() + handleRestPath(request.getPath(), rest);
-                return HttpRequest.get(requestUrl)
-                        .addHeaders(handleHeader2Map(headers))
-                        .timeout(50000)
-                        .execute().body();
-            } else if (!checkJSONArray(params) & !checkJSONArray(rest) & checkJSONObject(reqBody)) {
-                // 只有 body 参数
-                String requestUrl = request.getHost() + request.getPath();
-                return HttpRequest.get(requestUrl)
-                        .addHeaders(handleHeader2Map(headers))
-                        .body(reqBody.toString())
-                        .timeout(50000)
-                        .execute().body();
-            }  else if (checkJSONArray(params) & !checkJSONArray(rest) & checkJSONObject(reqBody)) {
-                // 同时 param + body
-                String requestUrl = request.getHost() + handleParamsPath(request.getPath(), params);
-                return HttpRequest.get(requestUrl)
-                        .addHeaders(handleHeader2Map(headers))
-                        .body(reqBody.toString())
-                        .timeout(50000)
-                        .execute().body();
-            } else if (!checkJSONArray(params) & checkJSONArray(rest) & checkJSONObject(reqBody)) {
-                // 同时 rest + body
-                String requestUrl = request.getHost() + handleRestPath(request.getPath(), rest);
-                return HttpRequest.get(requestUrl)
-                        .addHeaders(handleHeader2Map(headers))
-                        .body(reqBody.toString())
-                        .timeout(50000)
-                        .execute().body();
+                        .execute();
+                JSONObject result = new JSONObject();
+                result.append("body", httpResponse.body())
+                        .append("cookies", httpResponse.getCookies())
+                        .append("responseStatus", httpResponse.getStatus())
+                        .append("responseHeaders", httpResponse.headers());
+                return result;
             }
+//            else if (!checkJSONArray(params) & checkJSONArray(rest) & !checkJSONObject(reqBody)) {
+//                // 只有 rest 参数
+//                String requestUrl = request.getHost() + handleRestPath(request.getPath(), rest);
+//                return HttpRequest.get(requestUrl)
+//                        .addHeaders(handleHeader2Map(headers))
+//                        .timeout(50000)
+//                        .execute();
+//            } else if (!checkJSONArray(params) & !checkJSONArray(rest) & checkJSONObject(reqBody)) {
+//                // 只有 body 参数
+//                String requestUrl = request.getHost() + request.getPath();
+//                return HttpRequest.get(requestUrl)
+//                        .addHeaders(handleHeader2Map(headers))
+//                        .body(reqBody.toString())
+//                        .timeout(50000)
+//                        .execute();
+//            }  else if (checkJSONArray(params) & !checkJSONArray(rest) & checkJSONObject(reqBody)) {
+//                // 同时 param + body
+//                String requestUrl = request.getHost() + handleParamsPath(request.getPath(), params);
+//                return HttpRequest.get(requestUrl)
+//                        .addHeaders(handleHeader2Map(headers))
+//                        .body(reqBody.toString())
+//                        .timeout(50000)
+//                        .execute();
+//            } else if (!checkJSONArray(params) & checkJSONArray(rest) & checkJSONObject(reqBody)) {
+//                // 同时 rest + body
+//                String requestUrl = request.getHost() + handleRestPath(request.getPath(), rest);
+//                return HttpRequest.get(requestUrl)
+//                        .addHeaders(handleHeader2Map(headers))
+//                        .body(reqBody.toString())
+//                        .timeout(50000)
+//                        .execute();
+//            }
         // post方法
-        } else if (requestMethod.equals("post")) {
-            if (!checkJSONArray(params) & !checkJSONArray(rest) & checkJSONObject(reqBody)) {
-                // 只有 body 参数
-                String requestUrl = request.getHost() + request.getPath();
-                return HttpRequest.post(requestUrl)
-                        .addHeaders(handleHeader2Map(headers))
-                        .body(reqBody.toString())
-                        .timeout(50000)
-                        .execute().body();
-            } else if (checkJSONArray(params) & !checkJSONArray(rest) & checkJSONObject(reqBody)) {
-                // 同时 param + body
-                String requestUrl = request.getHost() + handleParamsPath(request.getPath(), params);
-                return HttpRequest.post(requestUrl)
-                        .addHeaders(handleHeader2Map(headers))
-                        .body(reqBody.toString())
-                        .timeout(50000)
-                        .execute().body();
-
-            } else if (!checkJSONArray(params) & checkJSONArray(rest) & checkJSONObject(reqBody)) {
-                // 同时 rest + body
-                String requestUrl = request.getHost() + handleRestPath(request.getPath(), rest);
-                return HttpRequest.post(requestUrl)
-                        .addHeaders(handleHeader2Map(headers))
-                        .body(reqBody.toString())
-                        .timeout(50000)
-                        .execute().body();
-            }
         }
+//        else if (requestMethod.equals("post")) {
+//            if (!checkJSONArray(params) & !checkJSONArray(rest) & checkJSONObject(reqBody)) {
+//                // 只有 body 参数
+//                String requestUrl = request.getHost() + request.getPath();
+//                return HttpRequest.post(requestUrl)
+//                        .addHeaders(handleHeader2Map(headers))
+//                        .body(reqBody.toString())
+//                        .timeout(50000)
+//                        .execute().body();
+//            } else if (checkJSONArray(params) & !checkJSONArray(rest) & checkJSONObject(reqBody)) {
+//                // 同时 param + body
+//                String requestUrl = request.getHost() + handleParamsPath(request.getPath(), params);
+//                return HttpRequest.post(requestUrl)
+//                        .addHeaders(handleHeader2Map(headers))
+//                        .body(reqBody.toString())
+//                        .timeout(50000)
+//                        .execute().body();
+//
+//            } else if (!checkJSONArray(params) & checkJSONArray(rest) & checkJSONObject(reqBody)) {
+//                // 同时 rest + body
+//                String requestUrl = request.getHost() + handleRestPath(request.getPath(), rest);
+//                return HttpRequest.post(requestUrl)
+//                        .addHeaders(handleHeader2Map(headers))
+//                        .body(reqBody.toString())
+//                        .timeout(50000)
+//                        .execute().body();
+//            }
+//        }
         return null;
     }
 
