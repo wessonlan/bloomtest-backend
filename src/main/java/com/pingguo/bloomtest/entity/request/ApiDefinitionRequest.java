@@ -17,5 +17,5 @@ public class ApiDefinitionRequest {
     private String method;
     private JSONArray headers;
     private JSONObject request;
-    private String response;
+//    private String response;
 }
